@@ -8,9 +8,11 @@ WORKDIR /home/node/packages/cli
 # Install additional npm libraries
 RUN npm install --save pdf-lib
 
-# Copy and set permissions for entrypoint script
-COPY ./entrypoint.sh /
+# Copy the entrypoint script to the container
+COPY ./entrypoint.sh /entrypoint.sh
+
+# Ensure the script is executable
 RUN chmod +x /entrypoint.sh
 
 # Set the entrypoint
-CMD ["/entrypoint.sh"]
+ENTRYPOINT ["/entrypoint.sh"]
